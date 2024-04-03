@@ -1,0 +1,2 @@
+langchain-community==0.0.29
+langchain-core==0.1.36
