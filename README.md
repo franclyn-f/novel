@@ -64,3 +64,19 @@ novels目录
 
 ## 执行示例
 ![img_2.png](images/img_2.png)
+
+## 网页执行示例
+```
+cd src
+streamlit run novel_web.py
+```
+
+## 运行截图
+命令行界面如下
+![img.png](images/streamlit_listen.png)
+
+网页上打开localhost:8501
+![img.png](images/streamlit_start.png)
+
+点击开始按钮，网页上会显示小说内容
+![img.png](images/streamlit_writer.png)
