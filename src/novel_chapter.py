@@ -33,7 +33,7 @@ def save_content(content, file_name):
         file.flush()
 
 
-def get_chapter_title_prompt(summary, chapter_num):
+def get_chapter_title_prompt(summary, completed_chapter_num):
     prompt = """
     你是一位优秀的网文作者，擅长写玄幻小说，现在你需要写一篇玄幻小说，讲述一个少年逆天改命的故事，
     请为主角起一个听起来比较真实而好听的名字，不要跟有名的角色重名，全文大概100万字，其中每章大概2500-3000字，
@@ -46,13 +46,13 @@ def get_chapter_title_prompt(summary, chapter_num):
         以下是这篇小说之前内容的总结：
         {summary}
         """
-    chapter_tile_prompt = prompt
-    if chapter_num > 0:
-        chapter_tile_prompt = f"""{chapter_tile_prompt}
+    chapter_title_prompt = prompt
+    if completed_chapter_num > 0:
+        chapter_title_prompt = f"""{chapter_title_prompt}
 
-        目前已经写了{chapter_num}个章节，请你继续给出下一个章节的标题
+        目前已经写了{completed_chapter_num}个章节，请你继续给出下一个章节的标题
         """
-    return chapter_tile_prompt
+    return chapter_title_prompt
 
 
 def get_chapter_prompt(title_info, chapter_content, chapter_num):
@@ -139,10 +139,11 @@ while True:
             print("----------------------------------- summary end -----------------------------------")
             break
     print("----------------------------------- chapter end -----------------------------------")
-    save_content(chapter_content, f"novels/{chapter_num + 1}.txt")
+    chapter_num += 1
+    save_content(chapter_content, f"novels/{chapter_num}.txt")
     save_content(chapter_num, chapter_file_name)
     save_content(summary, summary_file_name)
-    chapter_num += 1
+
 
 
 
